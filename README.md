@@ -10,7 +10,7 @@ Configure estas variáveis no projeto Vercel:
 - `DISCORD_READER_TOKEN`: token do bot com acesso ao canal de logs.
 - `TRANSCRIPT_BOT_USER_ID`: ID do bot que publica os anexos `transcript_*.json` ou `.json.gz`.
 
-O bot gera links no formato `/?c=...&m=...&exp=...&sig=...`. A API valida HMAC-SHA256, expiração de 10 minutos, autor da mensagem e anexo antes de devolver o JSON.
+O bot gera um link permanente por ticket no formato `/?c=...&m=...&sig=...`. A API valida HMAC-SHA256, o autor da mensagem e o anexo antes de devolver o JSON. O link funciona enquanto a mensagem/anexo existir no Discord.
 
 > Não coloque tokens ou segredos em HTML, GitHub ou no arquivo `.env` versionado.
 

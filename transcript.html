@@ -454,14 +454,13 @@ function showError(msg) {
 
 (async function() {
   const params = new URLSearchParams(window.location.search);
-  const hasSignature = params.has('c') && params.has('m') && params.has('exp') && params.has('sig');
+  const hasSignature = params.has('c') && params.has('m') && params.has('sig');
   if (!hasSignature) {
     showError('Link inválido. Volte ao Discord e clique em Gerar link novamente.');
     return;
   }
   try {
     const res = await fetch(`/api/transcript?${params.toString()}`);
-    if (res.status === 410) { showError('Link expirado. Volte ao Discord e clique em Gerar link novamente.'); return; }
     if (!res.ok) { showError('Não foi possível carregar o transcript.'); return; }
     const payload = await res.json();
     document.getElementById('app').style.display = 'none';
